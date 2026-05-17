@@ -20,6 +20,7 @@
 
 
   #Environment Variables
+
   environment.sessionVariables = {
     PATH = [ "$HOME/.local/bin" ];
   };
