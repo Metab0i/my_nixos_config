@@ -158,6 +158,13 @@
     rclone-ui
     mullvad-vpn
     gnomeExtensions.appindicator
+
+    #programming utils
+    gcc
+    gdb
+
+    #lang-servers for NVIM
+    clang-tools
   ];
 
   # Mullvad VPN config
