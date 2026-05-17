@@ -19,6 +19,12 @@
 
 
 
+  #Environment Variables
+  environment.sessionVariables = {
+    PATH = [ "$HOME/.local/bin" ];
+  };
+
+
   # Networking
 
   networking.hostName = "nixos"; # Define your hostname.
