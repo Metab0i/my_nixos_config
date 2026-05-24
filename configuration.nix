@@ -11,7 +11,6 @@
     ];
 
 
-
   # Bootloader:
 
   boot.loader.systemd-boot.enable = true;
@@ -46,23 +45,21 @@
   #time.timeZone = en.wikipedia.org/wiki/List_of_tz_database_time_zones;
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_AU.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_AU.UTF-8";
-    LC_IDENTIFICATION = "en_AU.UTF-8";
-    LC_MEASUREMENT = "en_AU.UTF-8";
-    LC_MONETARY = "en_AU.UTF-8";
-    LC_NAME = "en_AU.UTF-8";
-    LC_NUMERIC = "en_AU.UTF-8";
-    LC_PAPER = "en_AU.UTF-8";
-    LC_TELEPHONE = "en_AU.UTF-8";
-    LC_TIME = "en_AU.UTF-8";
-  };
+  # Install all locales that G
+  i18n.extraLocales = "all";
+
+  #Fonts
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-color-emoji
+    proggyfonts
+  ];
 
 
 
-  # Desctop Configuration:
+  # Desktop Configuration:
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -71,11 +68,7 @@
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  # TODO: find a way to configure keyboard layout and layout switching
 
 
 
