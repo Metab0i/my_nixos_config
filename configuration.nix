@@ -158,6 +158,9 @@
 
     #lang-servers for NVIM
     clang-tools
+
+    #clipbaord util
+    xclip
   ];
 
   # Mullvad VPN config
