@@ -21,7 +21,7 @@
   #Environment Variables
 
   environment.sessionVariables = {
-    PATH = [ "$HOME/.local/bin" ];
+    PATH = [ "$HOME/.local/bin/my_scripts" ];
   };
 
 
