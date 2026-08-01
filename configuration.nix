@@ -116,7 +116,6 @@
       isNormalUser = true;
       description = "Meant to be used by automated harnessed predictive models and similar processes";
       packages = with pkgs; [
-	#claude-code
 	opencode		
       ];
     };
@@ -155,6 +154,8 @@
     #programming utils
     gcc
     gdb
+    python3
+    nodejs
 
     #lang-servers for NVIM
     clang-tools
