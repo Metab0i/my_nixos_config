@@ -157,8 +157,9 @@
     python3
     nodejs
 
-    #lang-servers for NVIM
-    clang-tools
+    #compression tools
+    unzip
+    zip
 
     #clipbaord util
     xclip
