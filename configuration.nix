@@ -139,7 +139,7 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-  #Dynamic Loader support for apps that expect it
+  #Conventional/Consensus Dynamic Loader support for apps that expect/need it
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc.lib #libstdc++/libgcc_s - clang is a c++ binary
