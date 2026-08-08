@@ -139,6 +139,14 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  #Dynamic Loader support for apps that expect it
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib #libstdc++/libgcc_s - clang is a c++ binary
+    zlib
+    zstd
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
