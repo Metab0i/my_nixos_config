@@ -188,6 +188,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    #essentials
     neovim
     git
     pciutils
@@ -196,6 +197,10 @@
     rclone-ui
     mullvad-vpn
     gnomeExtensions.appindicator
+
+    #general util
+    ripgrep
+    ripgrep-all
 
     #programming utils
     gcc
