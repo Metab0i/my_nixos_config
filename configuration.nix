@@ -39,6 +39,44 @@
 
 
 
+  # Security Key (U2F) Auth
+
+  #Essential:
+  # If you are trying to register a new key install pam_u2f:
+  #   nix-shell -p pam_u2f
+  # Create a config dir:
+  #   mkdir -p ~/.config/Yubico
+  # Whilst in nix-shell with pam_u2f - register the key:
+  #   pamu2fcfg > ~/.config/Yubico/u2f_keys
+  #   Key will begin flashing - touch the key
+  # Rebuild the system, open new terminal and test if it works:
+  #   sudo nixos-rebuild switch
+
+  # Enable hardware support (udev rules)
+  # hardware.u2f.enable = true;
+
+  # Enable the PAM U2F module
+  security.pam.u2f = {
+    enable = true;
+    # Optional: Prompt user to touch the device
+    settings.cue = true; 
+
+    # Optional: Require YubiKey + Password (safer) or just YubiKey
+    # control = "required";
+    # Key alone is enough (default setting)
+    control = "sufficient";
+  };
+
+  # Enable U2F for specific services (login and sudo)
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+    # If using a display manager (e.g., GDM, SDDM, LightDM), enable it there too:
+    # lightdm.u2fAuth = true;
+  };
+
+
+
   # Timezone & Region Configuration:
 
   # Set your time zone.
