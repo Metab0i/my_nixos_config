@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+  # Fetch the latest nixos-unstable tarball dynamically
+  unstableTarball = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -154,7 +158,7 @@
       isNormalUser = true;
       description = "Meant to be used by automated harnessed predictive models and similar processes";
       packages = with pkgs; [
-	opencode		
+	unstable.opencode		
       ];
     };
   };
@@ -170,6 +174,14 @@
 
 
   # Packages:
+
+  # Unstable packages gateway:
+  nixpkgs.config.packageOverrides = pkgs: {
+    unstable = import unstableTarball {
+      config = config.nixpkgs.config;
+      system = pkgs.system;
+    };
+  };
 
   # Using proprietary
   nixpkgs.config.allowUnfree = true;
