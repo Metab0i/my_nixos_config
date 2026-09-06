@@ -280,7 +280,7 @@ in
     nvidiaSettings = true;
 
     # Driver source
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 
     # Don't use opensource drivers
     open = false;
