@@ -246,11 +246,18 @@ in
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Automatic garbage collection: remove old generations and store paths weekly
+  # Automatic upgrades: update the system weekly
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+    allowReboot = false;
+  };
+
+  # Automatic garbage collection: remove old generations and store paths monthly
   nix.gc = {
     automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+    dates = "monthly";
+    options = "--delete-older-than 30d";
   };
 
 
