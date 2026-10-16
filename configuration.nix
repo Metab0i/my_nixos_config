@@ -79,6 +79,15 @@ in
     # lightdm.u2fAuth = true;
   };
 
+  # Let agent0 use sudo; the PAM stack above satisfies auth via the enrolled
+  # FIDO key (touch), so no password is required but a touch still is.
+  security.sudo.extraRules = [
+    {
+      users = [ "agent0" ];
+      commands = [ { command = "ALL"; } ];
+    }
+  ];
+
 
 
   # Timezone & Region Configuration:
@@ -236,6 +245,13 @@ in
   # Experimental Features, enable nix-command and flakes
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # Automatic garbage collection: remove old generations and store paths weekly
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
 
 
 
